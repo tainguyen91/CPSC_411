@@ -17,8 +17,7 @@ router.post("ClaimService/add"){
     let jObj = body?.asJSON
     if let jDict = jObj as? [String:String]{
         if let t = jDict["title"], let d = jDict["date"]{
-            let i = UUID().uuidString
-            let cObj = Claim(i:i, t: t, d: d, s:0)
+            let cObj = Claim( t: t, d: d)
             ClaimDao().addClaim(cObj: cObj)
         }
         response.send ("The Claim record was succesfully inserted (via POST Method)")
